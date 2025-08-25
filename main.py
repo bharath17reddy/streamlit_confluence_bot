@@ -22,7 +22,7 @@ FAISS_PATH = "faiss_store"
 # LOAD DATA FROM CONFLUENCE
 # --------------------
 def load_confluence_data(
-    url: str,
+    base_url: str,
     username: str,
     api_token: str,
     space_key: str | None = None,
@@ -31,7 +31,7 @@ def load_confluence_data(
     limit: int | None = None,
 ):
     loader = ConfluenceLoader(
-        url=url,
+        base_url=base_url,
         username=username,
         api_key=api_token,
         space_key=space_key,
@@ -111,7 +111,7 @@ if load_docs_btn:
             with st.spinner("Loading documents from Confluence..."):
                 page_id = page_id_input.strip()
                 docs = load_confluence_data(
-                    url=CONFLUENCE_URL,
+                    base_url=CONFLUENCE_URL,
                     username=CONFLUENCE_USERNAME,
                     api_token=CONFLUENCE_API_TOKEN,
                     space_key=space_key_input.strip(),
